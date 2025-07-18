@@ -7,6 +7,7 @@ import UserContext from "../../contexts/UserContext";
 import CartContext from "../../contexts/CartContext";
 import { checkoutAPI } from "../../services/orderServices";
 import { toast } from "react-toastify";
+import config from '../../config.json'
 
 const CartPage = () => {
   const [subTotal, setSubTotal] = useState(0);
@@ -38,7 +39,7 @@ const CartPage = () => {
     <section className="align_center cart_page">
       <div className="align_center user_info">
         <img
-          src={`http://localhost:5000/profile/${user?.profilePic}`}
+          src={`${config.backendURL}/profile/${user?.profilePic}`}
           alt="User Profile"
         />
         <div>
@@ -95,9 +96,8 @@ const CartPage = () => {
         </tbody>
       </table>
       <button
-        className={`search_button checkout_button ${
-          cart.length === 0 ? "disabled_button" : ""
-        }`}
+        className={`search_button checkout_button ${cart.length === 0 ? "disabled_button" : ""
+          }`}
         onClick={() => cart.length > 0 && onCheckOutClick()}
       >
         Checkout
