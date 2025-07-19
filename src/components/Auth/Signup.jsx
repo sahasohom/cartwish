@@ -52,6 +52,7 @@ const Signup = () => {
   const onSubmit = async (formData) => {
     try {
       await signUp(formData, profilePic);
+      window.location = "/";
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setFormError(error.response.data.message);

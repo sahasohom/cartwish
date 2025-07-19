@@ -53,6 +53,7 @@ const App = () => {
   useEffect(() => {
     try {
       const jwtUser = getUser();
+      console.log('jwtUser', jwtUser)
       if (jwtUser) {
         if (Date.now() >= jwtUser.exp * 1000) {
           localStorage.removeItem("token");

@@ -18,6 +18,8 @@ export const signUp = async (user, profile) => {
         }
     })
 
+    console.log('token', data.token)
+
     localStorage.setItem(tokenName, data.token)
 }
 
@@ -38,6 +40,7 @@ export const logOut = () => {
 export const getUser = () => {
     try {
         const jwt = localStorage.getItem(tokenName);
+        console.log('jwt', jwt)
         return jwtDecode(jwt)
 
     } catch (error) {
