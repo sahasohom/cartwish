@@ -35,7 +35,6 @@ const Login = () => {
   const onSubmit = async (formData) => {
     try {
       setIsLoading(true);
-      // return;
       await login(formData);
       const { state } = location;
       window.location = state ? state.from : "/";
@@ -43,6 +42,7 @@ const Login = () => {
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setFormError(error.response.data.message);
+        setIsLoading(false);
       }
     }
   };
